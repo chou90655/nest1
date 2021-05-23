@@ -34,7 +34,7 @@ export class PostsController {
   @Put(':id')
   @ApiOperation({ summary: '编辑帖子' })
   async update(@Param('id') id: string, @Body() body: CreatePostDto) {
-    console.log(id, body);
+    await PostModule.findByIdAndUpdate(id, body);
     return {
       success: true,
     };
